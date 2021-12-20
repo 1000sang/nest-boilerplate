@@ -1,6 +1,6 @@
 ## Description
 
-nestjs boilerpalte base
+nestjs boilerpalte
 
 ## Run
 
