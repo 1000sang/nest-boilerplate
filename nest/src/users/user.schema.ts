@@ -46,14 +46,6 @@ export class User extends Document {
   @IsNotEmpty()
   password: string;
 
-  @ApiProperty({
-    example: 'abcd',
-    description: 'imgUrl',
-  })
-  @Prop({})
-  @IsString()
-  imgUrl: string;
-
   readonly readOnlyData: { id: string; email: string; name: string };
 }
 
