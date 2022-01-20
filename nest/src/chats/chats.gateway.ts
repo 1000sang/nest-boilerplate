@@ -24,33 +24,33 @@ export class ChatsGateway
     this.logger.log('init');
   }
 
-  // handleDisconnect(@ConnectedSocket() socket: Socket) {
-  //   this.logger.log(`disconnected : ${socket.id} ${socket.nsp.name}`);
-  // }
+  handleDisconnect(@ConnectedSocket() socket: Socket) {
+    this.logger.log(`disconnected : ${socket.id} ${socket.nsp.name}`);
+  }
 
-  // handleConnection(@ConnectedSocket() socket: Socket) {
-  //   this.logger.log(`connected : ${socket.id} ${socket.nsp.name}`);
-  // }
+  handleConnection(@ConnectedSocket() socket: Socket) {
+    this.logger.log(`connected : ${socket.id} ${socket.nsp.name}`);
+  }
 
   @SubscribeMessage('new_user')
   handleNewUser(
     @MessageBody() username: string,
-    // @ConnectedSocket() socket: Socket,
+    @ConnectedSocket() socket: Socket,
   ) {
     // username db에 적재
-    // socket.broadcast.emit('user_connected', username);
-    // return username;
+    socket.broadcast.emit('user_connected', username);
+    return username;
   }
 
   @SubscribeMessage('submit_chat')
   handleSubmitChat(
     @MessageBody() chat: string,
-    // @ConnectedSocket() socket: Socket,
+    @ConnectedSocket() socket: Socket,
   ) {
     // username db에 적재
-    // socket.broadcast.emit('new_chat', {
-    //   chat,
-    //   username: socket.id,
-    // });
+    socket.broadcast.emit('new_chat', {
+      chat,
+      username: socket.id,
+    });
   }
 }
