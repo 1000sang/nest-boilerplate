@@ -22,6 +22,7 @@ export class ChatsGateway
 
   afterInit() {
     this.logger.log('init');
+    this.logger.log('init');
   }
 
   handleDisconnect(@ConnectedSocket() socket: Socket) {
